@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Campaign Structure</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="navbar">
+<a href="index.html">Home</a>
+<a href="structure.html">Campaign Structure</a>
+<a href="audiences.html">Audiences</a>
+<a href="pixel.html">Pixel & CAPI</a>
+<a href="metrics.html">KPIs</a>
+<a href="optimization.html">Optimization</a>
+</div>
+
+<div class="section">
+
+<h2>How Meta Ads Actually Work (Auction System)</h2>
+
+<p>Every time a user opens Instagram or Facebook, Meta runs an auction to decide which advertisement to show.</p>
+
+<pre class="mermaid">
+sequenceDiagram
+User->>Meta App: Opens Feed
+Meta App->>Meta Server: Request Ads
+Meta Server->>Auction Engine: Evaluate Advertisers
+Auction Engine->>Ranking System: Calculate Scores
+Ranking System->>Winner Ad: Highest Value
+Winner Ad->>User: Ad Displayed
+</pre>
+
+<h2>Ad Rank Formula</h2>
+<p><b>Total Value = Bid + Estimated Action Rate + Ad Quality</b></p>
+
+<ul>
+<li>Bid = how much advertiser willing to pay</li>
+<li>Estimated Action Rate = chance of conversion</li>
+<li>Ad Quality = engagement feedback</li>
+</ul>
+
+<div class="example">
+Example:
+Low budget but engaging ad can beat high budget poor ad.
+</div>
+
+<h2>Learning Phase</h2>
+
+<pre class="mermaid">
+flowchart TD
+Launch --> DataCollection --> PatternLearning --> OptimizedDelivery
+</pre>
+
+<div class="note">
+Meta needs about 50 conversions per week per ad set to optimize properly.
+</div>
+
+<a class="article" href="https://www.facebook.com/business/help/430291176997542" target="_blank">
+Official Meta Auction Explanation
+</a>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+<script>mermaid.initialize({startOnLoad:true});</script>
+
+</body>
+</html>
