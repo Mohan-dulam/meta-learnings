@@ -9,7 +9,7 @@ async function sendMessage() {
   chatbox.innerHTML += `<p><b>You:</b> ${message}</p>`;
   input.value = "";
 
-  const response = await fetch("https://meta-learnings.vercel.app/api/chat", {
+  const response = await fetch("https://meta-learnings-hcweyq4v5-mohans-projects-733d3d9c.vercel.app/api/chat", {
     method: "POST",
     headers: {
       "Content-Type": "application/json"
