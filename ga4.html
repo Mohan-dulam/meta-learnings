@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Google Analytics 4</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="navbar">
+<a href="index.html">Home</a>
+<a href="structure.html">Campaign</a>
+<a href="audiences.html">Audiences</a>
+<a href="pixel.html">Pixel</a>
+<a href="gtm.html">GTM</a>
+<a href="ga4.html">GA4</a>
+<a href="metrics.html">KPIs</a>
+<a href="optimization.html">Optimization</a>
+<a href="casestudy.html">Case Study</a>
+</div>
+
+<div class="section">
+
+<h2>Google Analytics 4 — Measurement System</h2>
+
+<p>GA4 tracks user behavior across website and apps using event-based tracking.</p>
+
+<h3>Data Flow</h3>
+
+<pre class="mermaid">
+flowchart TD
+User --> Website --> GA4Tag --> GA4Server --> Reports
+</pre>
+
+<h3>Events</h3>
+<ul>
+<li>page_view</li>
+<li>view_item</li>
+<li>add_to_cart</li>
+<li>purchase</li>
+</ul>
+
+<h3>Attribution</h3>
+GA4 uses data-driven attribution.
+
+<div class="example">
+User clicks Facebook ad → later searches Google → purchases  
+GA4 credits both channels.
+</div>
+
+<a class="article" href="https://support.google.com/analytics/answer/10089681" target="_blank">
+Official GA4 Guide
+</a>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+<script>mermaid.initialize({startOnLoad:true});</script>
+
+</body>
+</html>
