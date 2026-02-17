@@ -1,4 +1,20 @@
+export const config = {
+  api: {
+    bodyParser: false,
+  },
+};
+
 export default async function handler(req, res) {
+
+  // CORS headers
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.setHeader("Access-Control-Allow-Methods", "POST, OPTIONS");
+  res.setHeader("Access-Control-Allow-Headers", "Content-Type");
+
+  // handle preflight request
+  if (req.method === "OPTIONS") {
+    return res.status(200).end();
+  }
 
   if (req.method !== "POST") {
     return res.status(405).json({ error: "Method not allowed" });
@@ -6,9 +22,18 @@ export default async function handler(req, res) {
 
   try {
 
-    const userMessage = req.body.message;
+    let body = "";
 
-    const response = await fetch("https://api.openai.com/v1/chat/completions", {
+    await new Promise((resolve) => {
+      req.on("data", chunk => {
+        body += chunk;
+      });
+      req.on("end", resolve);
+    });
+
+    const { message } = JSON.parse(body);
+
+    const openaiResponse = await fetch("https://api.openai.com/v1/chat/completions", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -19,23 +44,23 @@ export default async function handler(req, res) {
         messages: [
           {
             role: "system",
-            content: "You are a friendly digital marketing teacher. Explain Meta Ads, Pixel, GA4, GTM, audiences, optimization and KPIs in simple step-by-step learning style."
+            content: "You are a helpful digital marketing tutor. Explain Meta Ads, Pixel, CAPI, GTM, GA4, audiences and optimization clearly step by step like a teacher."
           },
           {
             role: "user",
-            content: userMessage
+            content: message
           }
         ]
       })
     });
 
-    const data = await response.json();
+    const data = await openaiResponse.json();
 
     res.status(200).json({
-      reply: data.choices[0].message.content
+      reply: data.choices?.[0]?.message?.content || "No reply received"
     });
 
-  } catch (error) {
-    res.status(500).json({ error: "Server error" });
+  } catch (err) {
+    res.status(500).json({ error: err.message });
   }
 }
