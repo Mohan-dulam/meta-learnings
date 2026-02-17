@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Meta Audiences</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="navbar">
+<a href="index.html">Home</a>
+<a href="structure.html">Campaign</a>
+<a href="audiences.html">Audiences</a>
+<a href="pixel.html">Pixel</a>
+<a href="gtm.html">GTM</a>
+<a href="ga4.html">GA4</a>
+<a href="metrics.html">KPIs</a>
+<a href="optimization.html">Optimization</a>
+<a href="casestudy.html">Case Study</a>
+</div>
+
+<div class="section">
+
+<h2>Meta Audience Targeting — Complete Guide</h2>
+
+<p>Audience selection tells Meta WHO should see your ad.  
+The algorithm then learns WHICH users inside that audience convert.</p>
+
+<h3>3 Types of Audiences</h3>
+
+<h2>1. Core Audience (Cold Traffic)</h2>
+
+<ul>
+<li>Location</li>
+<li>Age</li>
+<li>Gender</li>
+<li>Interests</li>
+<li>Behaviors</li>
+</ul>
+
+<pre class="mermaid">
+flowchart LR
+BroadUsers --> InterestFilter --> EligibleAudience
+</pre>
+
+<div class="example">
+Example:
+Gym owner runs ad targeting "Fitness & Supplements" interests.
+Meta finds users interested in workout content.
+</div>
+
+---
+
+<h2>2. Custom Audience (Retargeting)</h2>
+
+<ul>
+<li>Website visitors</li>
+<li>Instagram engagers</li>
+<li>Video viewers</li>
+<li>Lead form openers</li>
+</ul>
+
+<pre class="mermaid">
+flowchart TD
+AdClick --> WebsiteVisit --> PixelCapture --> RetargetingAudience
+</pre>
+
+---
+
+<h2>3. Lookalike Audience (Scaling)</h2>
+
+<p>Meta analyzes converters and finds similar people.</p>
+
+<ul>
+<li>1% → high quality</li>
+<li>5% → scale</li>
+<li>10% → reach</li>
+</ul>
+
+<div class="note">
+Best source = Purchasers or Qualified Leads
+</div>
+
+<h2>Funnel Strategy</h2>
+
+<pre class="mermaid">
+flowchart TD
+ColdAudience --> Engagers --> WebsiteVisitors --> Purchasers
+</pre>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+<script>mermaid.initialize({startOnLoad:true});</script>
+
+</body>
+</html>
