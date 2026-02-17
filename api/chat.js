@@ -1,66 +1,31 @@
-export const config = {
-  api: {
-    bodyParser: false,
-  },
-};
+async function sendMessage() {
 
-export default async function handler(req, res) {
+  const input = document.getElementById("userInput");
+  const message = input.value;
 
-  // CORS headers
-  res.setHeader("Access-Control-Allow-Origin", "*");
-  res.setHeader("Access-Control-Allow-Methods", "POST, OPTIONS");
-  res.setHeader("Access-Control-Allow-Headers", "Content-Type");
+  if (!message) return;
 
-  // handle preflight request
-  if (req.method === "OPTIONS") {
-    return res.status(200).end();
-  }
-
-  if (req.method !== "POST") {
-    return res.status(405).json({ error: "Method not allowed" });
-  }
+  const chatbox = document.getElementById("chatbox");
+  chatbox.innerHTML += `<p><b>You:</b> ${message}</p>`;
+  input.value = "";
 
   try {
 
-    let body = "";
-
-    await new Promise((resolve) => {
-      req.on("data", chunk => {
-        body += chunk;
-      });
-      req.on("end", resolve);
-    });
-
-    const { message } = JSON.parse(body);
-
-    const openaiResponse = await fetch("https://api.openai.com/v1/chat/completions", {
+    const response = await fetch("https://meta-learnings-hcweyq4v5-mohans-projects-733d3d9c.vercel.app/api/chat", {
       method: "POST",
+      mode: "cors",
       headers: {
-        "Content-Type": "application/json",
-        "Authorization": `Bearer ${process.env.OPENAI_API_KEY}`
+        "Content-Type": "application/json"
       },
-      body: JSON.stringify({
-        model: "gpt-4o-mini",
-        messages: [
-          {
-            role: "system",
-            content: "You are a helpful digital marketing tutor. Explain Meta Ads, Pixel, CAPI, GTM, GA4, audiences and optimization clearly step by step like a teacher."
-          },
-          {
-            role: "user",
-            content: message
-          }
-        ]
-      })
+      body: JSON.stringify({ message: message })
     });
 
-    const data = await openaiResponse.json();
+    const data = await response.json();
 
-    res.status(200).json({
-      reply: data.choices?.[0]?.message?.content || "No reply received"
-    });
+    chatbox.innerHTML += `<p><b>AI Tutor:</b> ${data.reply}</p>`;
+    chatbox.scrollTop = chatbox.scrollHeight;
 
-  } catch (err) {
-    res.status(500).json({ error: err.message });
+  } catch (error) {
+    chatbox.innerHTML += `<p><b>AI Tutor:</b> Connection failed. Check API.</p>`;
   }
 }
