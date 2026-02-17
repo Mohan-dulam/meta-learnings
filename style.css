@@ -1,0 +1,83 @@
+body{
+font-family:Segoe UI, Arial;
+margin:0;
+background:#f4f6fb;
+line-height:1.7;
+}
+
+.navbar{
+background:#0b5cff;
+padding:14px;
+position:sticky;
+top:0;
+}
+
+.navbar a{
+color:white;
+margin:0 14px;
+text-decoration:none;
+font-weight:600;
+}
+
+header{
+background:linear-gradient(135deg,#0b5cff,#0038a8);
+color:white;
+padding:60px 20px;
+text-align:center;
+}
+
+.section{
+background:white;
+max-width:1000px;
+margin:40px auto;
+padding:30px;
+border-radius:14px;
+box-shadow:0 5px 20px rgba(0,0,0,0.12);
+}
+
+h2{
+color:#0b5cff;
+margin-top:30px;
+}
+
+.note{
+background:#fff3cd;
+padding:15px;
+border-left:6px solid #ffc107;
+margin:20px 0;
+}
+
+.example{
+background:#e8f5e9;
+padding:15px;
+border-left:6px solid #28a745;
+margin:20px 0;
+}
+
+table{
+border-collapse:collapse;
+width:100%;
+margin-top:20px;
+}
+
+table, th, td{
+border:1px solid #ccc;
+padding:10px;
+}
+
+.article{
+background:#eef3ff;
+padding:12px;
+margin:18px 0;
+border-left:5px solid #0b5cff;
+text-decoration:none;
+display:block;
+color:#0b5cff;
+font-weight:bold;
+}
+
+img{
+max-width:100%;
+border-radius:10px;
+margin:20px 0;
+}
