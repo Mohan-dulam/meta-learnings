@@ -1,7 +1,7 @@
 async function sendMessage() {
 
   const input = document.getElementById("userInput");
-  const message = input.value;
+  const message = input.value.trim();
 
   if (!message) return;
 
@@ -13,19 +13,20 @@ async function sendMessage() {
 
     const response = await fetch("https://meta-learnings-hcweyq4v5-mohans-projects-733d3d9c.vercel.app/api/chat", {
       method: "POST",
-      mode: "cors",
       headers: {
+        "Accept": "application/json",
         "Content-Type": "application/json"
       },
       body: JSON.stringify({ message: message })
     });
 
-    const data = await response.json();
+    const text = await response.text();
+    const data = JSON.parse(text);
 
     chatbox.innerHTML += `<p><b>AI Tutor:</b> ${data.reply}</p>`;
     chatbox.scrollTop = chatbox.scrollHeight;
 
   } catch (error) {
-    chatbox.innerHTML += `<p><b>AI Tutor:</b> Connection failed. Check API.</p>`;
+    chatbox.innerHTML += `<p><b>AI Tutor:</b> Unable to connect to server.</p>`;
   }
 }
