@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Meta Pixel</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="navbar">
+<a href="index.html">Home</a>
+<a href="structure.html">Campaign Structure</a>
+<a href="audiences.html">Audiences</a>
+<a href="pixel.html">Pixel & CAPI</a>
+<a href="metrics.html">KPIs</a>
+<a href="optimization.html">Optimization</a>
+</div>
+
+<div class="section">
+
+<h2>Meta Pixel Tracking</h2>
+
+<pre class="mermaid">
+sequenceDiagram
+User->>Facebook: Clicks Ad
+Facebook->>Website: Opens Page
+Website->>Browser: Pixel Loads
+Browser->>Meta Server: Send Event
+Meta Server->>Ads Manager: Record Conversion
+</pre>
+
+<p>The pixel tracks user behavior and allows optimization and retargeting.</p>
+
+<h2>Standard Events</h2>
+<ul>
+<li>PageView</li>
+<li>ViewContent</li>
+<li>AddToCart</li>
+<li>InitiateCheckout</li>
+<li>Purchase</li>
+<li>Lead</li>
+</ul>
+
+<h2>Conversion API (CAPI)</h2>
+
+<pre class="mermaid">
+flowchart LR
+User --> WebsiteServer --> MetaServer --> Attribution
+</pre>
+
+<p>CAPI sends data directly from server to Meta and fixes tracking loss caused by iOS privacy updates.</p>
+
+<div class="example">
+Safari blocks pixel → CAPI still records purchase → Meta learns correct audience.
+</div>
+
+<a class="article" href="https://www.facebook.com/business/help/2041148702652965" target="_blank">
+Official Conversion API Guide
+</a>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+<script>mermaid.initialize({startOnLoad:true});</script>
+
+</body>
+</html>
