@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Optimization</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="navbar">
+<a href="index.html">Home</a>
+<a href="structure.html">Campaign Structure</a>
+<a href="audiences.html">Audiences</a>
+<a href="pixel.html">Pixel & CAPI</a>
+<a href="metrics.html">KPIs</a>
+<a href="optimization.html">Optimization</a>
+</div>
+
+<div class="section">
+
+<h2>Optimization Decision Process</h2>
+
+<pre class="mermaid">
+flowchart TD
+CampaignRunning --> CheckCPM
+CheckCPM -->|High| FixAudience
+CheckCPM -->|Normal| CheckCTR
+CheckCTR -->|Low| ChangeCreative
+CheckCTR -->|Good| CheckConversion
+CheckConversion -->|Low| ImproveLandingPage
+CheckConversion -->|Good| ScaleBudget
+</pre>
+
+<h2>Scaling</h2>
+
+<ul>
+<li>Increase budget 10-20% every 48 hours</li>
+<li>Duplicate winning ad set</li>
+<li>Introduce new creatives</li>
+</ul>
+
+<div class="note">
+Large sudden budget increases reset learning phase.
+</div>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+<script>mermaid.initialize({startOnLoad:true});</script>
+
+</body>
+</html>
